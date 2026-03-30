@@ -29,7 +29,141 @@ a{text-decoration:none;color:inherit}
 .nav__links a:hover{color:var(--orange)}
 .nav__cta{background:var(--orange);color:var(--bg)!important;padding:9px 22px;border-radius:30px;font-weight:600!important;font-size:13px!important;letter-spacing:.5px!important;text-transform:none!important;transition:background .2s,transform .2s!important}
 .nav__cta:hover{background:var(--orange2)!important;transform:translateY(-1px);color:var(--bg)!important}
+/* Burger menu */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
 
+.burger-line {
+  width: 25px;
+  height: 3px;
+  background-color: var(--orange);
+  transition: all 0.3s ease;
+}
+
+/* Animation burger en X */
+.burger-line1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.burger-line2 {
+  opacity: 0;
+}
+.burger-line3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu mobile */
+.nav__links--open {
+  display: flex !important; /* Override display:none */
+  position: absolute;
+  top: 70px; /* sous la navbar */
+  right: 0;
+  background: rgba(246,246,247,0.95);
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 12px 0 0 12px;
+  box-shadow: -4px 4px 20px rgba(0,0,0,0.1);
+  z-index: 99;
+  min-width: 180px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .nav__burger {
+    display: flex;
+  }
+  .nav__links {
+    display: none; /* caché par défaut sur mobile */
+    position: absolute;
+    top: 70px;
+    right: 0;
+    flex-direction: column;
+    background: rgba(246,246,247,0.95);
+    padding: 20px;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -4px 4px 20px rgba(0,0,0,0.1);
+  }
+}
+/* Basiques burger */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 101; /* au-dessus du menu */
+}
+.burger-line {
+  width: 25px;
+  height: 3px;
+  background-color: var(--orange);
+  transition: all 0.3s ease;
+}
+.burger-line1 { transform: rotate(45deg) translate(5px,5px); }
+.burger-line2 { opacity: 0; }
+.burger-line3 { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* Menu mobile slide */
+.nav__links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav__links--open {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background: rgba(246,246,247,0.95);
+  backdrop-filter: blur(12px);
+  flex-direction: column;
+  padding: 100px 20px;
+  gap: 24px;
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 102;
+}
+
+@media(max-width:900px) {
+  .nav__burger { display: flex; }
+
+  .nav__links {
+    position: fixed;
+    top: 0;
+    right: -250px; /* hors écran */
+    height: 100vh;
+    width: 250px;
+    background: rgba(246,246,247,0.95);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    padding: 100px 20px;
+    gap: 24px;
+    transform: translateX(0);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 102;
+  }
+
+  .nav__links--open {
+    transform: translateX(-250px); /* slide depuis la droite */
+    opacity: 1;
+  }
+}
+
+/* Overlay flou derrière le menu */
+.nav__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
 /* =============================================
    HERO
    ============================================= */
@@ -73,8 +207,19 @@ a{text-decoration:none;color:inherit}
 .about__text p strong{color:var(--white);font-weight:500}
 .about__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:40px;border-top:1px solid var(--grey2)}
 .about__stat-num{font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--orange)}
-.about__stat-label{font-size:13px;color:var(--grey);margin-top:4px} */
-.about__photo-wrapper{background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/flog.jpg') no-repeat center/cover}; */ */
+.about__stat-label{
+  font-size:13px;
+  color:var(--grey);
+  margin-top:4px;
+}
+.about__photo-wrapper{
+  background: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(54, 181, 213, 0.5)),
+    url('../assets/images/flog.jpg');
+    
+  background-size: cover;
+  background-position: center;
+}
 
 /* =============================================
    ABOUT SECTION

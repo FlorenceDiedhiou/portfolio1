@@ -1,4 +1,4 @@
-import image from "../assets/image/flog.jpg";
+import image from "../assets/images/flog.jpg";
 
 function About() {
   return (
@@ -11,7 +11,7 @@ function About() {
             <div className="about__image">
               <img src={image} alt="Florence Diedhiou" />
             </div>
-            <span className="about__name">Florence Diedhiou</span>
+            <span className="about__name">Diedhiou</span>
           </div>
 
           <div className="about__deco"></div> {/* Tu peux cacher ce div si ce n'est pas utile */}
